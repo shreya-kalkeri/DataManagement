@@ -1,0 +1,3447 @@
+{
+  type: 'flow',
+  kind: 'artifact',
+  metadata: {
+    trifactaVersion: '10.0.0+2299228.20230222064820.038eac17',
+    exportedAt: '2023-03-19T01:30:29.165Z',
+    exportedBy: 513836,
+    uuid: 'a1dd55d0-c5f5-11ed-bb81-eb3d3db4f97c',
+    comment: '',
+    primaryFlowIds: [
+      1480906,
+    ],
+    edition: 'Dataprep',
+    lastMigration: '20220721085341',
+  },
+  data: {
+    artifacts: [],
+    connections: [],
+    flows: [
+      {
+        settings: {
+          optimize: 'default',
+          optimizers: {
+            columnPruning: 'enabled',
+            filterPushdown: 'enabled',
+            columnPruningOnSource: 'enabled',
+            filterPushdownOnSource: 'enabled',
+            joinPushdown: 'enabled',
+            expressionPushdown: 'enabled',
+            aggPushdown: 'enabled',
+            unionPushdown: 'enabled',
+            mergePushdown: 'enabled',
+            profilePushdown: 'enabled',
+            samplePushdown: 'enabled',
+            customJsUdfPushdown: 'enabled',
+            advancedPushdown: 'enabled',
+            filesToBigQuery: 'enabled',
+            filesToSnowflake: 'default',
+            CDWToFiles: 'enabled',
+            fullPushdown: 'default',
+          },
+          dbOverrides: {},
+        },
+        id: 1480906,
+        name: 'Untitled Flow – 3',
+        description: null,
+        defaultOutputDir: null,
+        fromExampleFlowHash: null,
+        fromExampleFlowName: null,
+        fromTemplateId: null,
+        flownodes: [
+          {
+            id: 8082999,
+            scriptId: 7192770,
+            flowNodeId: null,
+            wrangled: false,
+            referenceId: null,
+            sampleLoadLimit: null,
+          },
+          {
+            id: 8083000,
+            scriptId: 7192771,
+            flowNodeId: null,
+            wrangled: true,
+            referenceId: null,
+            sampleLoadLimit: null,
+          },
+          {
+            id: 8083076,
+            scriptId: 7192836,
+            flowNodeId: null,
+            wrangled: true,
+            referenceId: null,
+            sampleLoadLimit: null,
+          },
+        ],
+        notes: [],
+        flowgraphvertices: [
+          {
+            id: 11416716,
+            objectType: 'flownode',
+            objectId: 8082999,
+            x: 4,
+            y: 65,
+            width: null,
+            height: null,
+          },
+          {
+            id: 11416717,
+            objectType: 'flownode',
+            objectId: 8083000,
+            x: 244,
+            y: 65,
+            width: null,
+            height: null,
+          },
+          {
+            id: 11416840,
+            objectType: 'flownode',
+            objectId: 8083076,
+            x: 484,
+            y: 215,
+            width: null,
+            height: null,
+          },
+          {
+            id: 11416718,
+            objectType: 'outputobject',
+            objectId: 1205394,
+            x: 484,
+            y: 65,
+            width: null,
+            height: null,
+          },
+          {
+            id: 11656532,
+            objectType: 'outputobject',
+            objectId: 1205411,
+            x: 724,
+            y: 215,
+            width: null,
+            height: null,
+          },
+        ],
+        flowedges: [
+          {
+            id: 6602815,
+            inFlowNodeId: 8082999,
+            inPortId: null,
+            outFlowNodeId: 8083000,
+            outPortId: null,
+          },
+          {
+            id: 6602872,
+            inFlowNodeId: 8083000,
+            inPortId: null,
+            outFlowNodeId: 8083076,
+            outPortId: null,
+          },
+        ],
+        references: [],
+        flowrunparameteroverrides: [],
+        runparameters: [],
+        recipes: [
+          {
+            id: 7192770,
+            name: 'customers.csv',
+            description: null,
+            active: true,
+            nextPortId: 1,
+            steps: [
+              {
+                columnMetadata: null,
+                task: {
+                  annotations: {
+                    hidden: true,
+                  },
+                  kind: 'task',
+                  type: 'Load',
+                  parameters: {
+                    format: {
+                      annotations: {},
+                      kind: 'func',
+                      type: 'FormatBlob',
+                      parameters: {},
+                    },
+                    location: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: 'id://2594578',
+                    },
+                    enableLineage: {
+                      kind: 'constant',
+                      type: 'Bool',
+                      value: true,
+                    },
+                    as: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column1',
+                        },
+                      ],
+                    },
+                  },
+                  outputName: 'original_datasource_2594578',
+                },
+                tableData: null,
+                portId: null,
+                id: 45482390,
+                hash: 'e22c13f9afcc1154e08cffdb86b1d53bc6bd2ce2',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: null,
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      column1: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'SplitRows',
+                  parameters: {
+                    on: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: '\r\n',
+                    },
+                    col: {
+                      kind: 'column',
+                      type: 'Column',
+                      value: 'column1',
+                      relation: null,
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482391,
+                hash: '49435ca14849ee2e63ebe7353ad1126e7f0139f9',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: null,
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      column2: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column3: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column4: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column5: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column6: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column7: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column8: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column9: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column10: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column11: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column12: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Ipaddress',
+                          ],
+                        ],
+                      },
+                      column13: {
+                        type: [
+                          'Datetime',
+                          'mm-dd-yy',
+                          'mm*dd*yyyy',
+                        ],
+                        _likely_types: [
+                          [
+                            'Datetime',
+                            'mm-dd-yy',
+                            'mm*dd*yyyy',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column14: {
+                        type: [
+                          'Float',
+                        ],
+                        _likely_types: [
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column15: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column16: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Split',
+                  parameters: {
+                    col: {
+                      kind: 'column',
+                      type: 'Column',
+                      value: 'column1',
+                      relation: null,
+                    },
+                    type: {
+                      kind: 'bundle',
+                      type: 'Bundle',
+                      value: 'on',
+                    },
+                    on: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: ',',
+                    },
+                    limit: {
+                      kind: 'constant',
+                      type: 'Integer',
+                      value: 14,
+                    },
+                    quote: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: '"',
+                    },
+                    as: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column2',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column3',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column4',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column5',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column6',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column7',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column8',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column9',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column10',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column11',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column12',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column13',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column14',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column15',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column16',
+                        },
+                      ],
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482392,
+                hash: 'd523f5691c20a65416e876976d4289242a2ca7d8',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: null,
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      column2: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column3: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column4: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column5: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column6: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column7: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column8: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column9: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column10: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column11: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column12: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Ipaddress',
+                          ],
+                        ],
+                      },
+                      column13: {
+                        type: [
+                          'Datetime',
+                          'mm-dd-yy',
+                          'mm*dd*yyyy',
+                        ],
+                        _likely_types: [
+                          [
+                            'Datetime',
+                            'mm-dd-yy',
+                            'mm*dd*yyyy',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column14: {
+                        type: [
+                          'Float',
+                        ],
+                        _likely_types: [
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column15: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column16: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Set',
+                  parameters: {
+                    col: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'column',
+                          type: 'Wildcard',
+                          value: '*',
+                          annotations: {
+                            includeLineage: false,
+                            includeFileLineage: false,
+                          },
+                          relation: null,
+                        },
+                      ],
+                    },
+                    value: {
+                      annotations: {},
+                      kind: 'func',
+                      type: 'If',
+                      parameters: {
+                        true_expression: {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'Substitute',
+                          parameters: {
+                            ignoreCase: {
+                              kind: 'constant',
+                              type: 'Bool',
+                              value: false,
+                            },
+                            col: {
+                              annotations: {},
+                              kind: 'func',
+                              type: 'Trim',
+                              parameters: {
+                                col: {
+                                  kind: 'variable',
+                                  type: 'Variable',
+                                  value: 'col',
+                                },
+                              },
+                            },
+                            on: {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: '{start}"|"{end}',
+                            },
+                            with: {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '',
+                            },
+                          },
+                        },
+                        false_expression: {
+                          kind: 'variable',
+                          type: 'Variable',
+                          value: 'col',
+                        },
+                        predicate: {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'And',
+                          parameters: {
+                            lhs: {
+                              annotations: {},
+                              kind: 'func',
+                              type: 'StartsWith',
+                              parameters: {
+                                ignore_case: {
+                                  kind: 'constant',
+                                  type: 'Bool',
+                                  value: false,
+                                },
+                                lhs: {
+                                  annotations: {},
+                                  kind: 'func',
+                                  type: 'Trim',
+                                  parameters: {
+                                    col: {
+                                      kind: 'variable',
+                                      type: 'Variable',
+                                      value: 'col',
+                                    },
+                                  },
+                                },
+                                rhs: {
+                                  kind: 'constant',
+                                  type: 'String',
+                                  value: '"',
+                                },
+                              },
+                            },
+                            rhs: {
+                              annotations: {},
+                              kind: 'func',
+                              type: 'EndsWith',
+                              parameters: {
+                                ignore_case: {
+                                  kind: 'constant',
+                                  type: 'Bool',
+                                  value: false,
+                                },
+                                lhs: {
+                                  annotations: {},
+                                  kind: 'func',
+                                  type: 'Trim',
+                                  parameters: {
+                                    col: {
+                                      kind: 'variable',
+                                      type: 'Variable',
+                                      value: 'col',
+                                    },
+                                  },
+                                },
+                                rhs: {
+                                  kind: 'constant',
+                                  type: 'String',
+                                  value: '"',
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482393,
+                hash: 'd0f68f205c9260a10e4c06e0569afa85fda9d56b',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: null,
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      column2: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column3: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column4: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column5: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column6: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column7: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column8: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column9: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column10: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column11: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      column12: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Ipaddress',
+                          ],
+                        ],
+                      },
+                      column13: {
+                        type: [
+                          'Datetime',
+                          'mm-dd-yy',
+                          'mm*dd*yyyy',
+                        ],
+                        _likely_types: [
+                          [
+                            'Datetime',
+                            'mm-dd-yy',
+                            'mm*dd*yyyy',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column14: {
+                        type: [
+                          'Float',
+                        ],
+                        _likely_types: [
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column15: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      column16: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Replace',
+                  parameters: {
+                    with: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: '"',
+                    },
+                    col: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'column',
+                          type: 'Wildcard',
+                          value: '*',
+                          annotations: {
+                            includeLineage: false,
+                            includeFileLineage: false,
+                          },
+                          relation: null,
+                        },
+                      ],
+                    },
+                    type: {
+                      kind: 'bundle',
+                      type: 'Bundle',
+                      value: 'on',
+                    },
+                    on: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: '""',
+                    },
+                    global: {
+                      kind: 'constant',
+                      type: 'Bool',
+                      value: true,
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482394,
+                hash: 'e32869c51f7ede5e36df1af76ed6a323d57c3bff',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: null,
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      customerID: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      companyName: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      contactName: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      contactTitle: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      address: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      city: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      region: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      postalCode: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      country: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      phone: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                      fax: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Ipaddress',
+                          ],
+                        ],
+                      },
+                      'start-date': {
+                        type: [
+                          'Datetime',
+                          'mm-dd-yy',
+                          'mm*dd*yyyy',
+                        ],
+                        _likely_types: [
+                          [
+                            'Datetime',
+                            'mm-dd-yy',
+                            'mm*dd*yyyy',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      'Unit Price': {
+                        type: [
+                          'Float',
+                        ],
+                        _likely_types: [
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      Discount: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      Product: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Header',
+                  parameters: {
+                    sanitize: {
+                      kind: 'constant',
+                      type: 'Bool',
+                      value: false,
+                    },
+                    as: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'customerID',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'companyName',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'contactName',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'contactTitle',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'address',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'city',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'region',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'postalCode',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'country',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'phone',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'fax',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'start-date',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'Unit Price',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'Discount',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'Product',
+                        },
+                      ],
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: {
+                  column2: 'customerID',
+                  column3: 'companyName',
+                  column4: 'contactName',
+                  column5: 'contactTitle',
+                  column6: 'address',
+                  column7: 'city',
+                  column8: 'region',
+                  column9: 'postalCode',
+                  column10: 'country',
+                  column11: 'phone',
+                  column12: 'fax',
+                  column13: 'start-date',
+                  column14: 'Unit Price',
+                  column15: 'Discount',
+                  column16: 'Product',
+                },
+                portId: null,
+                id: 45482395,
+                hash: '0a2b801a1817067a6e717ec06f16565ce3f90f46',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+            ],
+            dqScriptRules: [],
+          },
+          {
+            id: 7192771,
+            name: 'customers',
+            description: null,
+            active: true,
+            nextPortId: 1,
+            steps: [
+              {
+                columnMetadata: {
+                  customerID: {
+                    id: '7cqdsf0',
+                  },
+                  companyName: {
+                    id: '8fzc3o5',
+                  },
+                  contactName: {
+                    id: '6k5452i',
+                  },
+                  contactTitle: {
+                    id: '7bj9o97',
+                  },
+                  address: {
+                    id: '66otsv7',
+                  },
+                  city: {
+                    id: '6hlrus6',
+                  },
+                  region: {
+                    id: '74ozz29',
+                  },
+                  postalCode: {
+                    id: '81dkne3',
+                  },
+                  country: {
+                    id: '7kuvcep',
+                  },
+                  phone: {
+                    id: '6yyv03b',
+                  },
+                  fax: {
+                    id: '5teqn24',
+                  },
+                  'start-date': {
+                    id: '8k7vs1i',
+                  },
+                  'Unit Price': {
+                    id: '6myvzv4',
+                  },
+                  Discount: {
+                    id: '6km8dfq',
+                  },
+                  Product: {
+                    id: '680no2m',
+                  },
+                  TRIFACTA__FILE_LINEAGE_INFO: {
+                    id: '67e6iug',
+                  },
+                },
+                task: {
+                  annotations: {
+                    hidden: true,
+                  },
+                  kind: 'task',
+                  type: 'Load',
+                  parameters: {
+                    format: {
+                      annotations: {},
+                      kind: 'func',
+                      type: 'FormatBlob',
+                      parameters: {},
+                    },
+                    location: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: 'portId://null',
+                    },
+                    enableLineage: {
+                      kind: 'constant',
+                      type: 'Bool',
+                      value: true,
+                    },
+                    as: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column1',
+                        },
+                      ],
+                    },
+                  },
+                  outputName: 'original_datasource_2594578',
+                },
+                tableData: null,
+                portId: null,
+                id: 45482397,
+                hash: 'c907fef06d665b8d2e51620f03889491c6f0bf1a',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      'start-date': {
+                        type: [
+                          'Datetime',
+                          'mm-dd-yy',
+                          'mm*dd*yyyy',
+                        ],
+                        _likely_types: [
+                          [
+                            'Datetime',
+                            'mm-dd-yy',
+                            'mm*dd*yyyy',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'ConvertPattern',
+                  parameters: {
+                    col: {
+                      kind: 'column',
+                      type: 'Column',
+                      value: 'start-date',
+                      relation: null,
+                    },
+                    cases: {
+                      kind: 'matrix',
+                      type: 'Matrix',
+                      value: [
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: '({m})/({digit})/({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '$1/0$2/$3',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: '({m})/({d})/({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '$1/$2/$3',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Jan-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '1/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Feb-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '2/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Mar-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '3/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Apr-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '4/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'May-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '5/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Jun-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '6/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Jul-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '7/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Aug-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '8/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Sep-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '9/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Oct-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '10/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Nov-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '11/$1/$2',
+                            },
+                          ],
+                        },
+                        {
+                          kind: 'array',
+                          type: 'Array',
+                          value: [
+                            {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: 'Dec-({dd})-({yyyy})',
+                            },
+                            {
+                              kind: 'constant',
+                              type: 'String',
+                              value: '12/$1/$2',
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    after: {
+                      kind: 'constant',
+                      type: 'Pattern',
+                      value: '{start}',
+                    },
+                    before: {
+                      kind: 'constant',
+                      type: 'Pattern',
+                      value: '{end}',
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482452,
+                hash: 'efc98f13fb5a27b938bef48870d6a615e8605423',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      Product: {
+                        type: [
+                          'String',
+                        ],
+                        _likely_types: [
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                          [
+                            'Map',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Set',
+                  parameters: {
+                    col: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'Product',
+                          relation: null,
+                        },
+                      ],
+                    },
+                    value: {
+                      annotations: {},
+                      kind: 'func',
+                      type: 'If',
+                      parameters: {
+                        true_expression: {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'silver',
+                        },
+                        false_expression: {
+                          kind: 'variable',
+                          type: 'Variable',
+                          value: 'col',
+                        },
+                        predicate: {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'Matches',
+                          parameters: {
+                            ignore_case: {
+                              kind: 'constant',
+                              type: 'Bool',
+                              value: false,
+                            },
+                            lhs: {
+                              kind: 'array',
+                              type: 'Array',
+                              value: [
+                                {
+                                  kind: 'column',
+                                  type: 'Column',
+                                  value: 'Product',
+                                  relation: null,
+                                },
+                              ],
+                            },
+                            rhs: {
+                              kind: 'constant',
+                              type: 'Pattern',
+                              value: '{start}{lower}{5}{end}',
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482614,
+                hash: 'e4018f89fd22d20daacf07ffc8f20136d8baba0e',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      Discount: {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Set',
+                  parameters: {
+                    col: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'Discount',
+                          relation: null,
+                        },
+                      ],
+                    },
+                    value: {
+                      annotations: {
+                        infix: true,
+                        parenthetical: false,
+                      },
+                      kind: 'func',
+                      type: 'Divide',
+                      parameters: {
+                        lhs: {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'Discount',
+                          relation: null,
+                        },
+                        rhs: {
+                          kind: 'constant',
+                          type: 'Integer',
+                          value: 100,
+                        },
+                      },
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482651,
+                hash: '6a461af4c82666407204f66b72b6dd88bae2285d',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {},
+                  kind: 'task',
+                  type: 'SetType',
+                  parameters: {
+                    col: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'Discount',
+                          relation: null,
+                        },
+                      ],
+                    },
+                    type: {
+                      kind: 'bundle',
+                      type: 'Bundle',
+                      value: 'Float',
+                    },
+                    lockDataType: {
+                      kind: 'constant',
+                      type: 'Bool',
+                      value: true,
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482656,
+                hash: '17474c3c949afc5cde226401a802643d0a4d037b',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {
+                  'Sales Price': {
+                    id: '70l05a8',
+                  },
+                },
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      'Sales Price': {
+                        type: [
+                          'Float',
+                        ],
+                        _likely_types: [
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Derive',
+                  parameters: {
+                    type: {
+                      kind: 'bundle',
+                      type: 'Bundle',
+                      value: 'single',
+                    },
+                    value: {
+                      annotations: {
+                        infix: false,
+                        parenthetical: false,
+                      },
+                      kind: 'func',
+                      type: 'Multiply',
+                      parameters: {
+                        lhs: {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'Unit Price',
+                          relation: null,
+                        },
+                        rhs: {
+                          annotations: {
+                            infix: true,
+                            parenthetical: false,
+                          },
+                          kind: 'func',
+                          type: 'Subtract',
+                          parameters: {
+                            lhs: {
+                              kind: 'constant',
+                              type: 'Integer',
+                              value: 1,
+                            },
+                            rhs: {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'Discount',
+                              relation: null,
+                            },
+                          },
+                        },
+                      },
+                    },
+                    as: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: 'Sales Price',
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482766,
+                hash: '09a2a785b1e21385d4fdc9bda4ede704b818ba47',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {},
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      'Sales Price': {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Set',
+                  parameters: {
+                    col: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'Sales Price',
+                          relation: null,
+                        },
+                      ],
+                    },
+                    value: {
+                      annotations: {},
+                      kind: 'func',
+                      type: 'Round',
+                      parameters: {
+                        digits: {
+                          kind: 'constant',
+                          type: 'Integer',
+                          value: 0,
+                        },
+                        operand: {
+                          kind: 'variable',
+                          type: 'Variable',
+                          value: 'col',
+                        },
+                      },
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45482771,
+                hash: '46c4e4f243a7fb064ee97dce4d43b82c798e230e',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+            ],
+            dqScriptRules: [],
+          },
+          {
+            id: 7192836,
+            name: 'Pivot Table ',
+            description: null,
+            active: true,
+            nextPortId: 1,
+            steps: [
+              {
+                columnMetadata: {
+                  customerID: {
+                    id: '8h5e7gn',
+                  },
+                  companyName: {
+                    id: 'by7sylc',
+                  },
+                  contactName: {
+                    id: 'c1ep1yt',
+                  },
+                  contactTitle: {
+                    id: 'cjkey2e',
+                  },
+                  address: {
+                    id: '98sd8xa',
+                  },
+                  city: {
+                    id: '8jc4ght',
+                  },
+                  region: {
+                    id: '9ww2tik',
+                  },
+                  postalCode: {
+                    id: '95sl2fq',
+                  },
+                  country: {
+                    id: '8nxaqho',
+                  },
+                  phone: {
+                    id: '9g3p3eq',
+                  },
+                  fax: {
+                    id: '7wtrxdz',
+                  },
+                  'start-date': {
+                    id: '9omw735',
+                  },
+                  'Unit Price': {
+                    id: '9qf0gvv',
+                  },
+                  Discount: {
+                    id: 'atcjek1',
+                  },
+                  'Sales Price': {
+                    id: '91ngkwj',
+                  },
+                  Product: {
+                    id: '9a4744p',
+                  },
+                  TRIFACTA__FILE_LINEAGE_INFO: {
+                    id: '6ml75o3',
+                  },
+                },
+                task: {
+                  annotations: {
+                    hidden: true,
+                  },
+                  kind: 'task',
+                  type: 'Load',
+                  parameters: {
+                    format: {
+                      annotations: {},
+                      kind: 'func',
+                      type: 'FormatBlob',
+                      parameters: {},
+                    },
+                    location: {
+                      kind: 'constant',
+                      type: 'String',
+                      value: 'portId://null',
+                    },
+                    enableLineage: {
+                      kind: 'constant',
+                      type: 'Bool',
+                      value: true,
+                    },
+                    as: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'column1',
+                        },
+                      ],
+                    },
+                  },
+                  outputName: 'original_datasource_8083000',
+                },
+                tableData: null,
+                portId: null,
+                id: 45482800,
+                hash: 'cf4512441c6e5290557fba6eaeb8b762c26b0461',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+              {
+                columnMetadata: {
+                  row_count: {
+                    id: 'cww6t2n',
+                  },
+                  'sum_Sales Price': {
+                    id: 'btc4thq',
+                  },
+                  'average_Sales Price': {
+                    id: 'bd46eac',
+                  },
+                  'min_Sales Price': {
+                    id: 'b8fuke5',
+                  },
+                  'max_Sales Price': {
+                    id: '7s1yim7',
+                  },
+                },
+                task: {
+                  annotations: {
+                    outputColumnAnnotations: {
+                      'min_Sales Price': {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      'max_Sales Price': {
+                        type: [
+                          'Integer',
+                        ],
+                        _likely_types: [
+                          [
+                            'Integer',
+                          ],
+                          [
+                            'Float',
+                          ],
+                          [
+                            'String',
+                          ],
+                          [
+                            'Phone',
+                          ],
+                          [
+                            'SSN',
+                          ],
+                        ],
+                      },
+                      row_count: {
+                        type: [
+                          'Integer',
+                        ],
+                      },
+                      'sum_Sales Price': {
+                        type: [
+                          'Float',
+                        ],
+                      },
+                      'average_Sales Price': {
+                        type: [
+                          'Float',
+                        ],
+                      },
+                    },
+                  },
+                  kind: 'task',
+                  type: 'Pivot',
+                  parameters: {
+                    limit: {
+                      kind: 'constant',
+                      type: 'Integer',
+                      value: 50,
+                    },
+                    col: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [],
+                    },
+                    group: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'city',
+                          relation: null,
+                        },
+                        {
+                          kind: 'column',
+                          type: 'Column',
+                          value: 'country',
+                          relation: null,
+                        },
+                      ],
+                    },
+                    value: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'Count',
+                          parameters: {},
+                          as: [
+                            'row_count',
+                          ],
+                        },
+                        {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'Sum',
+                          parameters: {
+                            col: {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'Sales Price',
+                              relation: null,
+                            },
+                          },
+                          as: [
+                            'sum_Sales Price',
+                          ],
+                        },
+                        {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'Average',
+                          parameters: {
+                            col: {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'Sales Price',
+                              relation: null,
+                            },
+                          },
+                          as: [
+                            'average_Sales Price',
+                          ],
+                        },
+                        {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'Min',
+                          parameters: {
+                            col: {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'Sales Price',
+                              relation: null,
+                            },
+                          },
+                          as: [
+                            'min_Sales Price',
+                          ],
+                        },
+                        {
+                          annotations: {},
+                          kind: 'func',
+                          type: 'Max',
+                          parameters: {
+                            col: {
+                              kind: 'column',
+                              type: 'Column',
+                              value: 'Sales Price',
+                              relation: null,
+                            },
+                          },
+                          as: [
+                            'max_Sales Price',
+                          ],
+                        },
+                      ],
+                    },
+                    as: {
+                      kind: 'array',
+                      type: 'Array',
+                      value: [
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'row_count',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'sum_Sales Price',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'average_Sales Price',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'min_Sales Price',
+                        },
+                        {
+                          kind: 'constant',
+                          type: 'String',
+                          value: 'max_Sales Price',
+                        },
+                      ],
+                    },
+                  },
+                  outputName: null,
+                },
+                tableData: null,
+                portId: null,
+                id: 45483034,
+                hash: 'a08aed3b5448390b8c0dee712e199cf675543537',
+                pbemappingartifacts: [],
+                targetmappingartifacts: [],
+                udfscriptlines: [],
+                dependencies: [],
+              },
+            ],
+            dqScriptRules: [],
+          },
+        ],
+        outputobjects: [
+          {
+            id: 1205394,
+            execution: 'dataflow',
+            profiler: true,
+            flowNodeId: 8083000,
+            isAdhoc: true,
+            ignoreRecipeErrors: false,
+            name: null,
+            description: null,
+            publications: [],
+            writesettings: [
+              {
+                delim: ',',
+                id: 2116850,
+                path: 'gs://dataprep-staging-7fa0c183-18c3-435a-bccc-c45dee0cc517/shreya.rajendra.kalkeri@srh-heidelberg.org/jobrun/customers.csv',
+                action: 'create',
+                format: 'csv',
+                compression: 'none',
+                header: false,
+                asSingleFile: false,
+                prefix: null,
+                suffix: '_increment',
+                hasQuotes: true,
+                includeMismatches: true,
+                connectionId: null,
+                runParameters: [],
+              },
+            ],
+            sqlscripts: [],
+            outputobjectdataflowoptions: [
+              {
+                id: 18790050,
+                key: 'autoscalingAlgorithm',
+                value: 'THROUGHPUT_BASED',
+              },
+              {
+                id: 18790056,
+                key: 'hostProjectId',
+                value: '',
+              },
+              {
+                id: 18790055,
+                key: 'label.',
+                value: '',
+              },
+              {
+                id: 18790048,
+                key: 'machineType',
+                value: 'n1-standard-1',
+              },
+              {
+                id: 18790053,
+                key: 'maxNumWorkers',
+                value: '1000',
+              },
+              {
+                id: 18790049,
+                key: 'network',
+                value: '',
+              },
+              {
+                id: 18790052,
+                key: 'numWorkers',
+                value: '1',
+              },
+              {
+                id: 18790046,
+                key: 'region',
+                value: 'us-central1',
+              },
+              {
+                id: 18790051,
+                key: 'serviceAccount',
+                value: '',
+              },
+              {
+                id: 18790045,
+                key: 'subnetwork',
+                value: '',
+              },
+              {
+                id: 18790054,
+                key: 'usePublicIps',
+                value: 'true',
+              },
+              {
+                id: 18790047,
+                key: 'zone',
+                value: '',
+              },
+            ],
+            outputobjectsparkoptions: [],
+            outputobjectschemadriftoptions: [
+              {
+                id: 933929,
+                key: 'schemaValidation',
+                value: 'true',
+              },
+              {
+                id: 933930,
+                key: 'stopJobOnErrorsFound',
+                value: 'false',
+              },
+            ],
+          },
+          {
+            id: 1205411,
+            execution: 'dataflow',
+            profiler: true,
+            flowNodeId: 8083076,
+            isAdhoc: true,
+            ignoreRecipeErrors: false,
+            name: null,
+            description: null,
+            publications: [],
+            writesettings: [
+              {
+                delim: ',',
+                id: 2116858,
+                path: 'gs://dataprep-staging-7fa0c183-18c3-435a-bccc-c45dee0cc517/shreya.rajendra.kalkeri@srh-heidelberg.org/jobrun/Pivot Table .csv',
+                action: 'create',
+                format: 'csv',
+                compression: 'none',
+                header: false,
+                asSingleFile: false,
+                prefix: null,
+                suffix: '_increment',
+                hasQuotes: true,
+                includeMismatches: true,
+                connectionId: null,
+                runParameters: [],
+              },
+            ],
+            sqlscripts: [],
+            outputobjectdataflowoptions: [
+              {
+                id: 18790130,
+                key: 'autoscalingAlgorithm',
+                value: 'THROUGHPUT_BASED',
+              },
+              {
+                id: 18790136,
+                key: 'hostProjectId',
+                value: '',
+              },
+              {
+                id: 18790135,
+                key: 'label.',
+                value: '',
+              },
+              {
+                id: 18790128,
+                key: 'machineType',
+                value: 'n1-standard-1',
+              },
+              {
+                id: 18790133,
+                key: 'maxNumWorkers',
+                value: '1000',
+              },
+              {
+                id: 18790129,
+                key: 'network',
+                value: '',
+              },
+              {
+                id: 18790132,
+                key: 'numWorkers',
+                value: '1',
+              },
+              {
+                id: 18790126,
+                key: 'region',
+                value: 'us-central1',
+              },
+              {
+                id: 18790131,
+                key: 'serviceAccount',
+                value: '',
+              },
+              {
+                id: 18790125,
+                key: 'subnetwork',
+                value: '',
+              },
+              {
+                id: 18790134,
+                key: 'usePublicIps',
+                value: 'true',
+              },
+              {
+                id: 18790127,
+                key: 'zone',
+                value: '',
+              },
+            ],
+            outputobjectsparkoptions: [],
+            outputobjectschemadriftoptions: [
+              {
+                id: 933943,
+                key: 'schemaValidation',
+                value: 'true',
+              },
+              {
+                id: 933944,
+                key: 'stopJobOnErrorsFound',
+                value: 'false',
+              },
+            ],
+          },
+        ],
+        datasources: [
+          {
+            path: '/shreya.rajendra.kalkeri@srh-heidelberg.org/upload/9e9ac6c0-e5b0-4e1e-ac29-f72773850808customers.csv',
+            bucket: 'dataprep-staging-7fa0c183-18c3-435a-bccc-c45dee0cc517',
+            userinfo: null,
+            type: 'gs',
+            host: null,
+            hasDynamicBucket: false,
+            hasDynamicUserInfo: false,
+            hasDynamicHost: false,
+            isDynamicOrConverted: false,
+            id: 2594578,
+            dynamicPath: null,
+            dynamicBucket: null,
+            dynamicHost: null,
+            dynamicUserInfo: null,
+            connectionId: null,
+            isSchematized: true,
+            isDynamic: false,
+            isConverted: false,
+            disableTypeInference: false,
+            hasStructuring: true,
+            hasSchemaErrors: false,
+            parsingScriptId: 7192770,
+            storageLocation: {
+              fullUri: 'gs://dataprep-staging-7fa0c183-18c3-435a-bccc-c45dee0cc517/shreya.rajendra.kalkeri@srh-heidelberg.org/upload/9e9ac6c0-e5b0-4e1e-ac29-f72773850808customers.csv',
+              id: 32098170,
+              path: '/shreya.rajendra.kalkeri@srh-heidelberg.org/upload/9e9ac6c0-e5b0-4e1e-ac29-f72773850808customers.csv',
+              size: 13964,
+              type: 'gs',
+              bucket: 'dataprep-staging-7fa0c183-18c3-435a-bccc-c45dee0cc517',
+              blobHost: null,
+              container: null,
+              hash: 'fa1e48038ee382ffb530b472bba790aedf1465e9',
+              host: null,
+              userinfo: null,
+            },
+            runParameters: [],
+          },
+        ],
+        webhookflowtasks: [],
+      },
+    ],
+    udfscriptartifacts: [],
+  },
+  hash: 'DxOi1kJCw9EpIVLNww+g6uXR99KRRMcG',
+}
